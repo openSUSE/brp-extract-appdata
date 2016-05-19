@@ -152,7 +152,7 @@ sub read_and_extend_appdata {
 }
 
 my @appdatas;
-find( { wanted => sub { push @appdatas, $_ if /\.appdata\.xml$/ || /\.metainfo.xml$/ } , no_chdir => 1}, "usr/share/appdata/");
+find( { wanted => sub { push @appdatas, $_ if /\.appdata\.xml$/ || /\.metainfo.xml$/ } , no_chdir => 1}, "usr/share/appdata/", "usr/share/metainfo");
 
 my $output = '';
 
