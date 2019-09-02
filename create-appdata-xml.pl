@@ -15,7 +15,7 @@ sub escape {
   return $d;
 }
 
-my $build_root = $::ENV{BUILD_ROOT} || '/';
+my $build_root = $::ENV{RPM_BUILD_ROOT} || '/';
 
 my $TOPDIR = '/usr/src/packages';
 $TOPDIR = '/.build.packages' if -d "$build_root/.build.packages";
@@ -57,7 +57,7 @@ exit 0 unless %appmatches;
 my %appresults;
 for my $rpm (@rpms) {
   next if $rpm =~ m/-debuginfo/ || $rpm =~ m/-debugsource/ || $rpm =~ /src\.rpm$/;
-  open (FILES, "chroot $build_root rpm -qp --qf '[%{NAME} %{FILENAMES}\n]' $rpm|");
+  open (FILES, "chroot $build_root rpm -qp --qf '%{NAME} [%{FILENAMES}\n]' $rpm|");
   my @files = <FILES>;
   chomp @files;
   close FILES;
