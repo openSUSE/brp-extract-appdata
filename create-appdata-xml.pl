@@ -15,7 +15,7 @@ sub escape {
   return $d;
 }
 
-my $build_root = $::ENV{RPM_BUILD_ROOT} || '/';
+my $build_root = $::ENV{BUILD_ROOT} || $::ENV{RPM_BUILD_ROOT} || '/';
 
 my $TOPDIR = '/usr/src/packages';
 $TOPDIR = '/.build.packages' if -d "$build_root/.build.packages";
