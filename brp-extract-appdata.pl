@@ -170,3 +170,7 @@ $type = $1 if $output =~ /(application|component)/s;
 print OUTPUT "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 print OUTPUT $output;
 print OUTPUT "\n";
+
+chmod(0644, $outputfile);
+
+print("\nextracted appdata successfully to $outputfile\n");
